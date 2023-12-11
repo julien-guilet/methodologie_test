@@ -10,9 +10,17 @@ def getCurrentTime():
 def sayHello():
     currentTime = getCurrentTime()
     if currentTime > '18':
-        print('Bonsoir')
+        print('Bonsoir !')
     else:
-        print('Bonjour')
+        print('Bonjour !')
+
+
+def sayGoodbye():
+    currentTime = getCurrentTime()
+    if currentTime > '18':
+        print('Bonne soirée !')
+    else:
+        print('Au revoir !')
 
 
 def isPalindrome(text):
@@ -22,9 +30,10 @@ def isPalindrome(text):
 
 def main():
     sayHello()
-    x = input('Enter text : ')
+    x = input('Entrez du texte : ')
     isPalindrome(x)
     print(x[::-1])
+    sayGoodbye()
 
 
 main()
