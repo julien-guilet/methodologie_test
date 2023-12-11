@@ -25,3 +25,6 @@ def main():
     x = input('Enter text : ')
     isPalindrome(x)
     print(x[::-1])
+
+
+main()
