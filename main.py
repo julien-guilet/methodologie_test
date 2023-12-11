@@ -12,11 +12,11 @@ def sayHello():
 def sayGoodbye():
     hour = datetime.now().strftime('%H')
     if (hour < '12'):
-        print('Good Morning')
+        print('Goodbye and Good Morning')
     elif (hour < '18'):
-        print('Good Afternoon')
+        print('Goodbye and Good Afternoon')
     else:
-        print('Good Evening')
+        print('Goodbye and Good Evening')
 
 def palindrome(text):
     if text == text[::-1]:
