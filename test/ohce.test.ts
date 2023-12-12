@@ -9,8 +9,11 @@ describe("test works", () => {
    test.each([...nonPalindromes])("QUAND on saisit un non-palindrome %s " +
        "ALORS elle est renvoyée en miroir",
        (chaîne : string) => {
+
+         // Arrange et Act
           let résultat = new VérificateurPalindrome().Vérifier(chaîne);
 
+          // Assert
           let attendu = chaîne.split('').reverse().join('');
           expect(résultat).toContain(attendu);
    });
@@ -19,8 +22,11 @@ describe("test works", () => {
    test("QUAND on saisit un palindrome " +
        "ALORS celui-ci est renvoyé " +
        "ET 'Bien dit !' est envoyé ensuite", () =>{
+
+         // Arrange et Act
       let résultat = new VérificateurPalindrome().Vérifier(palindrome);
 
+      // Assert
       expect(résultat).toContain(palindrome + os.EOL + Expressions.WELL_SAY);
    });
 
@@ -37,8 +43,11 @@ describe("test works", () => {
     test.each([...nonPalindromes, palindrome])('QUAND on saisit une chaîne %s ' +
        'ALORS "Au revoir" est envoyé en dernier.',
     (chaîne: string) => {
+
+       // Arrange et Act
        let résultat = new VérificateurPalindrome().Vérifier(chaîne);
 
+       // Assert
        let lignes = résultat.split(os.EOL);
        let dernièreLigne = lignes[lignes.length - 1];
        expect(dernièreLigne).toEqual(Expressions.GOODBYE)
@@ -52,10 +61,14 @@ describe("test works", () => {
        "ALORS celui-ci est renvoyé " +
        "ET '%s' de cette langue est envoyé", (langue: string, expressionExpected: string) =>{
 
-        
+        // Arrange
         let verificateur = new VérificateurPalindrome();
         verificateur.setLangage(langue);
+
+        // Act
         let résultat = verificateur.Vérifier(palindrome);
+
+        // Assert
       expect(résultat).toContain(palindrome + os.EOL + expressionExpected);
    });
 
@@ -66,11 +79,14 @@ describe("test works", () => {
        "QUAND on saisie une chaine " +
        "ALORS %s de cette langue est envoyé avant tout " , (langue: string, expressionExpected: string) =>{
 
-        
+        // Arrange
         let verificateur = new VérificateurPalindrome();
         verificateur.setLangage(langue);
+
+        // Act
         let résultat = verificateur.Vérifier(nonPalindromes[0]);
 
+         // Assert
         let premièreLigne = résultat.split(os.EOL)[0];
          expect(premièreLigne).toEqual(expressionExpected)
    });
