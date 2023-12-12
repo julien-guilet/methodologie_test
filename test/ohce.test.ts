@@ -132,20 +132,26 @@ describe("test works", () => {
    });
 
    test.each([
-    [momentsDeLaJournée[0],Expressions.HELLO],
-    [momentsDeLaJournée[1],Expressions.GOOD_MORNING],
-    [momentsDeLaJournée[2],Expressions.GOOD_AFTERNOON],
-    [momentsDeLaJournée[3],Expressions.GOOD_EVENING],
-    [momentsDeLaJournée[4],Expressions.GOOD_NIGHT]
- ])("ETANT DONNE un utilisateur parlant une langue " +
+    ["en",momentsDeLaJournée[0],Expressions.HELLO],
+    ["en",momentsDeLaJournée[1],Expressions.GOOD_MORNING],
+    ["en",momentsDeLaJournée[2],Expressions.GOOD_AFTERNOON],
+    ["en",momentsDeLaJournée[3],Expressions.GOOD_EVENING],
+    ["en",momentsDeLaJournée[4],Expressions.GOOD_NIGHT],
+    ["fr",momentsDeLaJournée[0],Expressions.BONJOUR],
+    ["fr",momentsDeLaJournée[1],Expressions.BONJOUR],
+    ["fr",momentsDeLaJournée[2],Expressions.BONJOUR],
+    ["fr",momentsDeLaJournée[3],Expressions.BONSOIR],
+    ["fr",momentsDeLaJournée[4],Expressions.BONSOIR]
+ ])("ETANT DONNE un utilisateur parlant une langue %s " +
      "ET que la periode de la journée est %s " +
      "QUAND on saisie une chaine " +
-     "ALORS %s de cette langue à cette période est envoyé avant tout " , (moment: MomentsDeLaJournee, expressionExpected: string) =>{
+     "ALORS %s de cette langue à cette période est envoyé avant tout " , (langue: string, moment: MomentsDeLaJournee, expressionExpected: string) =>{
 
       // Arrange
          let résultat = new VérificateurPalindromeTestBuilder()
          .withChaîne(nonPalindromes[0])
          .withMoment(moment)
+         .withLangage(langue)
       // Act
          .vérifier();
 

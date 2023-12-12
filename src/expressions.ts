@@ -11,5 +11,7 @@ export class Expressions {
     public static readonly GOOD_AFTERNOON = "Good Afternoon";
     public static readonly GOOD_EVENING= "Good Evening";
     public static readonly GOOD_NIGHT= "Good Night";
+
+    
     public static readonly BONSOIR= "Bonsoir";
 }
