@@ -19,7 +19,7 @@ export class VérificateurPalindrome {
         if(miroir == chaîne)
             sortie += this.langage.Féliciter() + os.EOL;
 
-        return sortie + this.langage.DireAuRevoir();
+        return sortie + this.langage.DireAuRevoir(this.moment);
     }
 
     public setLangage(langue: string): void {

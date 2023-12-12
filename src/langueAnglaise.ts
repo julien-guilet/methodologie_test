@@ -20,10 +20,20 @@ export class langageAnglaise implements langueInterface {
 
         if(moment == MomentsDeLaJournee.Nuit)
             return Expressions.GOOD_NIGHT;
+
         return Expressions.HELLO;
     }
 
-    public DireAuRevoir(): string {
+    public DireAuRevoir(moment: MomentsDeLaJournee): string {
+        if(moment == MomentsDeLaJournee.Matin)
+            return Expressions.HAVE_A_NICE_DAY;
+
+        if(moment == MomentsDeLaJournee.Soirée)
+            return Expressions.GOOD_EVENING;
+
+        if(moment == MomentsDeLaJournee.Nuit)
+            return Expressions.GOOD_NIGHT;
+        
         return Expressions.GOODBYE;
     }
 

@@ -14,7 +14,19 @@ export class langageFrancais implements langueInterface {
         return Expressions.BONJOUR;
     }
 
-    public DireAuRevoir(): string {
+    public DireAuRevoir(moment: MomentsDeLaJournee): string {
+        if(moment == MomentsDeLaJournee.Matin)
+            return Expressions.BONNE_JOURNEE;
+
+        if(moment == MomentsDeLaJournee.AprèsMidi)
+            return Expressions.BON_APRES_MIDI;
+
+        if(moment == MomentsDeLaJournee.Soirée)
+            return Expressions.BONNE_SOIREE;
+
+        if(moment == MomentsDeLaJournee.Nuit)
+            return Expressions.BONNE_NUIT;
+
         return Expressions.AU_REVOIR;
     }
 
