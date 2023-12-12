@@ -1,5 +1,9 @@
-import { VérificateurPalindrome } from "../src/vérificateurPalindrome";
-import { MomentsDeLaJournee } from "../src/moments";
+import { VérificateurPalindrome } from "../src/domaine/vérificateurPalindrome";
+import { MomentsDeLaJournee } from "../src/domaine/moments";
+import { acceptationParametersParDefaut, integrationParametersParDefaut, parametersTestsInterface } from "./parameters.tests.interface";
+
+const parameters: parametersTestsInterface =  process.env.LEVEL_TEST == "acceptation" ? new acceptationParametersParDefaut() : new integrationParametersParDefaut();
+
 
 /**
  * Represents a builder for creating instances of VérificateurPalindrome.
@@ -10,9 +14,9 @@ export class VérificateurPalindromeTestBuilder {
   private moment: MomentsDeLaJournee;
 
   constructor() {
-    this.chaîne = 'radar';
-    this.langage = 'en';
-    this.moment = MomentsDeLaJournee.Inconnu;
+    this.chaîne = parameters.nonPalindromes[0];
+    this.langage = parameters.langue;
+    this.moment = parameters.momentDeLaJournée;
   }
 
   /**

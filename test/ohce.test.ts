@@ -1,21 +1,15 @@
-import {VérificateurPalindrome} from "../src/vérificateurPalindrome";
+import {VérificateurPalindrome} from "../src/domaine/vérificateurPalindrome";
 import { VérificateurPalindromeTestBuilder } from "./vérificateurPalindrome.constructeur";
 import * as os from "os";
-import {Expressions} from "../src/expressions";
-import { MomentsDeLaJournee } from "../src/moments";
+import {Expressions} from "../src/domaine/expressions";
+import { MomentsDeLaJournee } from "../src/domaine/moments";
+import { acceptationParametersParDefaut, integrationParametersParDefaut, parametersTestsInterface } from "./parameters.tests.interface";
 
-const palindrome = 'radar';
-const nonPalindromes = ['test', 'ynov'];
-const momentsDeLaJournée = [
-   MomentsDeLaJournee.Inconnu,
-   MomentsDeLaJournee.Matin,
-   MomentsDeLaJournee.AprèsMidi,
-   MomentsDeLaJournee.Soirée,
-   MomentsDeLaJournee.Nuit
-];
+const parameters: parametersTestsInterface =  process.env.LEVEL_TEST == "acceptation" ? new acceptationParametersParDefaut() : new integrationParametersParDefaut();
+
 
 describe("test works", () => {
-   test.each([...nonPalindromes])("QUAND on saisit un non-palindrome %s " +
+   test.each([...parameters.nonPalindromes])("QUAND on saisit un non-palindrome %s " +
        "ALORS elle est renvoyée en miroir",
        (chaîne : string) => {
 
@@ -37,33 +31,33 @@ describe("test works", () => {
 
       // Arrange
       let résultat = new VérificateurPalindromeTestBuilder()
-         .withChaîne(palindrome)
+         .withChaîne(parameters.palindrome)
       // Act
          .vérifier();
 
       // Assert
-      expect(résultat).toContain(palindrome + os.EOL + Expressions.WELL_SAY);
+      expect(résultat).toContain(parameters.palindrome + os.EOL + Expressions.WELL_SAY);
    });
 
 
-   test.each([...nonPalindromes, palindrome])('QUAND on saisit une chaîne %s ' +
+   test.each([...parameters.nonPalindromes, parameters.palindrome])('QUAND on saisit une chaîne %s ' +
        'ALORS "Bonjour" est envoyé avant toute réponse',
     (chaîne: string) => {
        let résultat = new VérificateurPalindromeTestBuilder()
-            .withChaîne(chaîne)
+            .withChaîne(parameters.nonPalindromes[0])
             .vérifier();
 
        let premièreLigne = résultat.split(os.EOL)[0];
        expect(premièreLigne).toEqual(Expressions.HELLO)
    });
 
-    test.each([...nonPalindromes, palindrome])('QUAND on saisit une chaîne %s ' +
+    test.each([...parameters.nonPalindromes, parameters.palindrome])('QUAND on saisit une chaîne %s ' +
        'ALORS "Au revoir" est envoyé en dernier.',
     (chaîne: string) => {
 
        // Arrange
        let résultat = new VérificateurPalindromeTestBuilder()
-            .withChaîne(chaîne)
+            .withChaîne(parameters.nonPalindromes[0])
        // Act
             .vérifier();
 
@@ -83,13 +77,13 @@ describe("test works", () => {
 
       // Arrange
       let résultat = new VérificateurPalindromeTestBuilder()
-         .withChaîne(palindrome)
+         .withChaîne(parameters.palindrome)
          .withLangage(langue)
       // Act
          .vérifier();
 
       // Assert
-      expect(résultat).toContain(palindrome + os.EOL + expressionExpected);
+      expect(résultat).toContain(parameters.palindrome + os.EOL + expressionExpected);
    });
 
    test.each([
@@ -101,7 +95,7 @@ describe("test works", () => {
 
         // Arrange
         let résultat = new VérificateurPalindromeTestBuilder()
-            .withChaîne(nonPalindromes[0])
+            .withChaîne(parameters.nonPalindromes[0])
             .withLangage(langue)
         // Act
             .vérifier();
@@ -120,7 +114,7 @@ describe("test works", () => {
 
       // Arrange
         let résultat = new VérificateurPalindromeTestBuilder()
-        .withChaîne(nonPalindromes[0])
+        .withChaîne(parameters.nonPalindromes[0])
         .withLangage(langue)
       // Act
         .vérifier();
@@ -132,16 +126,16 @@ describe("test works", () => {
    });
 
    test.each([
-    ["en",momentsDeLaJournée[0],Expressions.HELLO],
-    ["en",momentsDeLaJournée[1],Expressions.GOOD_MORNING],
-    ["en",momentsDeLaJournée[2],Expressions.GOOD_AFTERNOON],
-    ["en",momentsDeLaJournée[3],Expressions.GOOD_EVENING],
-    ["en",momentsDeLaJournée[4],Expressions.GOOD_NIGHT],
-    ["fr",momentsDeLaJournée[0],Expressions.BONJOUR],
-    ["fr",momentsDeLaJournée[1],Expressions.BONJOUR],
-    ["fr",momentsDeLaJournée[2],Expressions.BONJOUR],
-    ["fr",momentsDeLaJournée[3],Expressions.BONSOIR],
-    ["fr",momentsDeLaJournée[4],Expressions.BONSOIR]
+    ["en",parameters.tousMomentsDeLaJournée[0],Expressions.HELLO],
+    ["en",parameters.tousMomentsDeLaJournée[1],Expressions.GOOD_MORNING],
+    ["en",parameters.tousMomentsDeLaJournée[2],Expressions.GOOD_AFTERNOON],
+    ["en",parameters.tousMomentsDeLaJournée[3],Expressions.GOOD_EVENING],
+    ["en",parameters.tousMomentsDeLaJournée[4],Expressions.GOOD_NIGHT],
+    ["fr",parameters.tousMomentsDeLaJournée[0],Expressions.BONJOUR],
+    ["fr",parameters.tousMomentsDeLaJournée[1],Expressions.BONJOUR],
+    ["fr",parameters.tousMomentsDeLaJournée[2],Expressions.BONJOUR],
+    ["fr",parameters.tousMomentsDeLaJournée[3],Expressions.BONSOIR],
+    ["fr",parameters.tousMomentsDeLaJournée[4],Expressions.BONSOIR]
  ])("ETANT DONNE un utilisateur parlant une langue %s " +
      "ET que la periode de la journée est %s " +
      "QUAND on saisie une chaine " +
@@ -149,7 +143,7 @@ describe("test works", () => {
 
       // Arrange
          let résultat = new VérificateurPalindromeTestBuilder()
-         .withChaîne(nonPalindromes[0])
+         .withChaîne(parameters.nonPalindromes[0])
          .withMoment(moment)
          .withLangage(langue)
       // Act

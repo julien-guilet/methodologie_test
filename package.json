@@ -3,7 +3,7 @@
     "typescript": "^5.3.3"
   },
   "scripts": {
-    "tsc": "tsc",
+    "run": "tsc && node src/main.js && tsc --build --clean",
     "test":"jest"
   },
   "devDependencies": {
