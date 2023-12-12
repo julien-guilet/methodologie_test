@@ -82,11 +82,14 @@ describe("test works", () => {
        "QUAND on saisie une chaine " +
        "ALORS %s de cette langue est envoyé en dernier " , (langue: string, expressionExpected: string) =>{
 
-        
+      // Arrange
       let verificateur = new VérificateurPalindrome();
       verificateur.setLangage(langue);
+
+      // Act
       let résultat = verificateur.Vérifier(nonPalindromes[0]);
 
+      // Assert
       let lignes = résultat.split(os.EOL);
       let dernièreLigne = lignes[lignes.length - 1];
       expect(dernièreLigne).toEqual(expressionExpected)
