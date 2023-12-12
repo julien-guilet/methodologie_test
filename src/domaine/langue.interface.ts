@@ -5,7 +5,7 @@ export interface langueInterface  {
 
     DireBonjour(moment: MomentsDeLaJournee): string;
 
-    DireAuRevoir(): string;
+    DireAuRevoir(moment: MomentsDeLaJournee): string;
 
     toString(): string;
 }

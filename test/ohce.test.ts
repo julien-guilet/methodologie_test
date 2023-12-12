@@ -153,4 +153,34 @@ describe("test works", () => {
       let premièreLigne = résultat.split(os.EOL)[0];
       expect(premièreLigne).toEqual(expressionExpected)
  });
+
+ test.each([
+   ["en",parameters.tousMomentsDeLaJournée[0],Expressions.GOODBYE],
+   ["en",parameters.tousMomentsDeLaJournée[1],Expressions.HAVE_A_NICE_DAY],
+   ["en",parameters.tousMomentsDeLaJournée[2],Expressions.GOODBYE],
+   ["en",parameters.tousMomentsDeLaJournée[3],Expressions.GOOD_EVENING],
+   ["en",parameters.tousMomentsDeLaJournée[4],Expressions.GOOD_NIGHT],
+   ["fr",parameters.tousMomentsDeLaJournée[0],Expressions.AU_REVOIR],
+   ["fr",parameters.tousMomentsDeLaJournée[1],Expressions.BONNE_JOURNEE],
+   ["fr",parameters.tousMomentsDeLaJournée[2],Expressions.BON_APRES_MIDI],
+   ["fr",parameters.tousMomentsDeLaJournée[3],Expressions.BONNE_SOIREE],
+   ["fr",parameters.tousMomentsDeLaJournée[4],Expressions.BONNE_NUIT]
+])("ETANT DONNE un utilisateur parlant une langue %s " +
+    "ET que la periode de la journée est %s " +
+    "QUAND on saisie une chaine " +
+    "ALORS %s de cette langue à cette période est envoyé en dernier " , (langue: string, moment: MomentsDeLaJournee, expressionExpected: string) =>{
+
+     // Arrange
+     let résultat = new VérificateurPalindromeTestBuilder()
+        .withChaîne(parameters.nonPalindromes[0])
+        .withMoment(moment)
+        .withLangage(langue)
+     // Act
+        .vérifier();
+
+     // Assert
+     let lignes = résultat.split(os.EOL);
+     let dernièreLigne = lignes[lignes.length - 1];
+     expect(dernièreLigne).toEqual(expressionExpected)
+});
 });
