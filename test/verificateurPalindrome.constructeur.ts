@@ -1,4 +1,4 @@
-import { VérificateurPalindrome } from "../src/domaine/vérificateurPalindrome";
+import { VérificateurPalindrome } from "../src/domaine/verificateurPalindrome";
 import { MomentsDeLaJournee } from "../src/domaine/moments";
 import { acceptationParametersParDefaut, integrationParametersParDefaut, parametersTestsInterface } from "./parameters.tests.interface";
 

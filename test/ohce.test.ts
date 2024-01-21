@@ -1,5 +1,5 @@
-import {VérificateurPalindrome} from "../src/domaine/vérificateurPalindrome";
-import { VérificateurPalindromeTestBuilder } from "./vérificateurPalindrome.constructeur";
+import {VérificateurPalindrome} from "../src/domaine/verificateurPalindrome";
+import { VérificateurPalindromeTestBuilder } from "./verificateurPalindrome.constructeur";
 import * as os from "os";
 import {Expressions} from "../src/domaine/expressions";
 import { MomentsDeLaJournee } from "../src/domaine/moments";
@@ -182,5 +182,5 @@ describe("test works", () => {
      let lignes = résultat.split(os.EOL);
      let dernièreLigne = lignes[lignes.length - 1];
      expect(dernièreLigne).toEqual(expressionExpected)
-});
+   });
 });
