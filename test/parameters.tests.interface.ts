@@ -1,3 +1,4 @@
+import { MomentActuelDeLaJournee } from "../src/application/momentActuelDeLaJournée";
 import { MomentsDeLaJournee } from "../src/domaine/moments";
 
 // Interface to define parameters for test environment 
@@ -28,7 +29,7 @@ export class acceptationParametersParDefaut implements parametersTestsInterface{
 export class integrationParametersParDefaut implements parametersTestsInterface{
     palindrome: string = "radar";
     nonPalindromes: string[] = ["test", "ynov"];
-    momentDeLaJournée: MomentsDeLaJournee = MomentsDeLaJournee.Inconnu;
+    momentDeLaJournée: MomentsDeLaJournee = MomentActuelDeLaJournee.get();
     tousMomentsDeLaJournée: MomentsDeLaJournee[] = [
         MomentsDeLaJournee.Inconnu,
         MomentsDeLaJournee.Matin,

@@ -1,6 +1,7 @@
 import { VérificateurPalindrome } from "../src/domaine/verificateurPalindrome";
 import { MomentsDeLaJournee } from "../src/domaine/moments";
 import { acceptationParametersParDefaut, integrationParametersParDefaut, parametersTestsInterface } from "./parameters.tests.interface";
+import { Expressions } from "../src/domaine/expressions";
 
 const parameters: parametersTestsInterface =  process.env.LEVEL_TEST == "acceptation" ? new acceptationParametersParDefaut() : new integrationParametersParDefaut();
 
@@ -67,5 +68,56 @@ export class VérificateurPalindromeTestBuilder {
   public vérifier(): string {
     const vérificateur = this.build();
     return vérificateur.Vérifier(this.chaîne);
+  }
+
+  public getBonjourEnfonctionDuMomentEtDeLaLangue(): string {
+
+    let expression = "";
+
+    switch (this.moment) {
+        case MomentsDeLaJournee.Matin:
+            expression = this.langage == "fr" ? Expressions.BONJOUR : Expressions.GOOD_MORNING;
+            break;
+        case MomentsDeLaJournee.AprèsMidi:
+            expression = this.langage == "fr" ? Expressions.BONJOUR : Expressions.GOOD_AFTERNOON;
+            break;
+        case MomentsDeLaJournee.Soirée:
+            expression = this.langage == "fr" ? Expressions.BONSOIR : Expressions.GOOD_EVENING;
+            break;
+        case MomentsDeLaJournee.Nuit:
+            expression = this.langage == "fr" ? Expressions.BONSOIR : Expressions.GOOD_NIGHT;
+            break;
+        default:
+            expression = this.langage == "fr" ? Expressions.BONJOUR : Expressions.HELLO;
+            break;
+    }
+
+    return expression;
+    
+  }
+
+  public getAuRevoirEnfonctionDuMomentEtDeLaLangue(): string {
+
+    let expression = "";
+
+    switch (this.moment) {
+        case MomentsDeLaJournee.Matin:
+            expression = this.langage == "fr" ? Expressions.BONNE_JOURNEE : Expressions.HAVE_A_NICE_DAY;
+            break;
+        case MomentsDeLaJournee.AprèsMidi:
+            expression = this.langage == "fr" ? Expressions.BON_APRES_MIDI : Expressions.GOOD_AFTERNOON;
+            break;
+        case MomentsDeLaJournee.Soirée:
+            expression = this.langage == "fr" ? Expressions.BONNE_SOIREE : Expressions.GOOD_EVENING;
+            break;
+        case MomentsDeLaJournee.Nuit:
+            expression = this.langage == "fr" ? Expressions.BONNE_NUIT : Expressions.GOOD_NIGHT;
+            break;
+        default:
+            expression = this.langage == "fr" ? Expressions.AU_REVOIR : Expressions.GOODBYE;
+            break;
+    }
+
+    return expression;
   }
 }

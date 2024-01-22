@@ -28,6 +28,9 @@ export class langageAnglaise implements langueInterface {
         if(moment == MomentsDeLaJournee.Matin)
             return Expressions.HAVE_A_NICE_DAY;
 
+        if(moment == MomentsDeLaJournee.AprèsMidi)
+            return Expressions.GOOD_AFTERNOON;
+
         if(moment == MomentsDeLaJournee.Soirée)
             return Expressions.GOOD_EVENING;
 
