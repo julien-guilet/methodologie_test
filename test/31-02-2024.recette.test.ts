@@ -1,11 +1,10 @@
-import {VérificateurPalindrome} from "../src/domaine/verificateurPalindrome";
 import { VérificateurPalindromeTestBuilder } from "./verificateurPalindrome.constructeur";
 import * as os from "os";
 import {Expressions} from "../src/domaine/expressions";
 import { MomentsDeLaJournee } from "../src/domaine/moments";
-import { acceptationParametersParDefaut, integrationParametersParDefaut, parametersTestsInterface } from "./parameters.tests.interface";
 
 describe("recette test du 31/02/2024", () => {
+
     test("QUAND on saisit un palindrome " +
        "ET que l'on est le soir " +
        "ET que l'on parle anglais " +
@@ -43,7 +42,7 @@ describe("recette test du 31/02/2024", () => {
 
    test("QUAND on saisit un palindrome " +
        "ET que l'on est le soir " +
-       "ALORS celui-ci est renvoyé " +
+       "ALORS celui-ci est renvoyé comme tel" +
        "ET 'Well say !' est envoyé ensuite", () => {
 
       // Arrange

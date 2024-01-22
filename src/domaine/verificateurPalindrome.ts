@@ -10,10 +10,6 @@ export class VérificateurPalindrome {
     langage : langueInterface = new langageAnglaise();
 
     moment : MomentsDeLaJournee = MomentsDeLaJournee.Inconnu;
-    
-    constructor() {
-        this.setCurrentLanguageSystem();
-    }
 
     public Vérifier(chaîne: string): string {
         let miroir = chaîne.split('').reverse().join('');
@@ -25,17 +21,6 @@ export class VérificateurPalindrome {
 
         return sortie + this.langage.DireAuRevoir(this.moment);
     }
-
-    // Ici nous avons pas réussi (ou pas compris) comment séparer le domaine de l'application
-    public setCurrentLanguageSystem() {
-        // Code to retrieve the current language system goes here
-        // Replace this with your actual implementation
-        var LanguageSystem = navigator.language.split('-')[0] ?? 'en'
-        if(LanguageSystem == "fr")
-            this.langage = new langageFrancais();
-        else
-            this.langage = new langageAnglaise();
-      }
 
     public setLangage(langue: string): void {
         if(langue == "fr")
