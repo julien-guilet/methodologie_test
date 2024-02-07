@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "run": "tsc && node src/main.js && tsc --build --clean",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.1.1"
+  }
+}
